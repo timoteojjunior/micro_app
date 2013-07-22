@@ -2,7 +2,9 @@ class MicropostsController < ApplicationController
   # GET /microposts
   # GET /microposts.json
   def index
-    @microposts = Micropost.all
+    @user = User.find(params[:user_id])
+    
+    @microposts = @user.microposts
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,8 +15,10 @@ class MicropostsController < ApplicationController
   # GET /microposts/1
   # GET /microposts/1.json
   def show
+    @user = User.find(params[:user_id])
+    
     @micropost = Micropost.find(params[:id])
-
+  
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @micropost }
@@ -25,7 +29,10 @@ class MicropostsController < ApplicationController
   # GET /microposts/new.json
   def new
     @micropost = Micropost.new
-
+    @user = User.find(params[:user_id])
+    
+    @micropost.user_id = @user.id
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @micropost }
@@ -35,16 +42,18 @@ class MicropostsController < ApplicationController
   # GET /microposts/1/edit
   def edit
     @micropost = Micropost.find(params[:id])
+     @user = User.find(params[:user_id])
   end
 
   # POST /microposts
   # POST /microposts.json
   def create
     @micropost = Micropost.new(params[:micropost])
-
+    @user = User.find(params[:user_id])
     respond_to do |format|
       if @micropost.save
-        format.html { redirect_to @micropost, notice: 'Micropost was successfully created.' }
+
+        format.html { redirect_to [@user,@micropost], notice: 'Micropost was successfully created.' }
         format.json { render json: @micropost, status: :created, location: @micropost }
       else
         format.html { render action: "new" }
@@ -74,9 +83,10 @@ class MicropostsController < ApplicationController
   def destroy
     @micropost = Micropost.find(params[:id])
     @micropost.destroy
-
+    @user = User.find(params[:user_id])
+    
     respond_to do |format|
-      format.html { redirect_to microposts_url }
+      format.html { redirect_to action: "index" }
       format.json { head :no_content }
     end
   end

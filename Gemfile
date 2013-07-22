@@ -24,6 +24,10 @@ end
 
 gem 'jquery-rails'
 
+
+gem 'therubyracer'
+gem 'execjs'
+
 #group :production do
 #    gem 'pg', '0.12.2'
 #end

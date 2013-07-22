@@ -13,3 +13,12 @@
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+</br>
+</br>
+
+<%= link_to 'See all '+ @user.name + ' microposts', user_microposts_path(@user, @microposts) %>
+
+</br>
+</br>
+
+<%= link_to 'Home Page', users_path %>

@@ -1,8 +1,12 @@
 MicroApp::Application.routes.draw do
-  resources :microposts
+  
 
 
-  resources :users
+  resources :users do
+    resources :microposts
+  end
+  
+  root :to =>'users#index'
 
 
   # The priority is based upon order of creation:
