@@ -43,6 +43,7 @@ class MicropostsController < ApplicationController
   def edit
     @micropost = Micropost.find(params[:id])
      @user = User.find(params[:user_id])
+     
   end
 
   # POST /microposts
@@ -66,10 +67,10 @@ class MicropostsController < ApplicationController
   # PUT /microposts/1.json
   def update
     @micropost = Micropost.find(params[:id])
-
+    @user = User.find(params[:user_id])
     respond_to do |format|
       if @micropost.update_attributes(params[:micropost])
-        format.html { redirect_to @micropost, notice: 'Micropost was successfully updated.' }
+        format.html { redirect_to [@user,@micropost], notice: 'Micropost was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

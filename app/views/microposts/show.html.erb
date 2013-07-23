@@ -17,9 +17,5 @@
 
 
 <%= link_to 'Edit', edit_user_micropost_path(@user,@micropost) %> |
-<%= link_to 'Back', user_micropost_path%>
+<%= link_to 'Back', user_microposts_path(@user, @microposts)%>
 
-</br>
-</br>
-
-<%= link_to 'Home Page', users_path %>

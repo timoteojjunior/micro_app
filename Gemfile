@@ -17,15 +17,18 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
+  
+  gem 'therubyracer', :platforms => :ruby
+  gem 'less-rails-bootstrap'
 
+  
   gem 'uglifier', '>= 1.0.3'
 end
 
 gem 'jquery-rails'
 
 
-gem 'therubyracer'
+
 gem 'execjs'
 
 #group :production do
