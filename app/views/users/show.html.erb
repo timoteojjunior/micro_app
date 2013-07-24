@@ -1,4 +1,10 @@
 <p id="notice"><%= notice %></p>
+<h3>Pagina do <%= @user.name %></h3>
+<p>
+  
+  
+  <%= image_tag "#{@user.id}.jpeg", class:"img-polaroid", :size => "200x200"%>
+  <p/>
 
 <p>
   <b>Name:</b>
@@ -11,10 +17,12 @@
 </p>
 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Edit', edit_user_path(@user),class: "btn btn-mini btn-primary" %> |
+<%= link_to 'Back', users_path, class: "btn btn-mini" %>
 </br>
 </br>
+<div class="form-actions">
 
-<%= link_to 'See all '+ @user.name + ' microposts', user_microposts_path(@user, @microposts) %>
+<%= link_to "See all #{@user.name} microposts", user_microposts_path(@user, @microposts), class: "btn"%>
 
+</div>

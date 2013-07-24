@@ -1,29 +1,38 @@
 <h1><%= @user.name %>'s microposts</h1>
 
-<table>
+<table class = "table">
   <tr>
-    <th>Content</th>
-    <th>TimeStamp</th>
-    <th></th>
+    <th>Conteudo</th>
+    <th>Data</th>
+    
     <th></th>
     <th></th>
   </tr>
 
 <% @microposts.each do |micropost| %>
   <tr>
-    <td><%= micropost.content %></td>
+    <td><%= link_to micropost.content, user_micropost_path(@user, micropost) %></td>
     <td><%= micropost.created_at %></td>
-    <td><%= link_to 'Show', user_micropost_path(@user, micropost) %></td>
-    <td><%= link_to 'Edit', edit_user_micropost_path(@user, micropost) %></td>
-    <td><%= link_to 'Destroy', user_micropost_path(@user, micropost), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    
+    <td><%= link_to 'Alterar', edit_user_micropost_path(@user, micropost), class: "btn btn-small btn-info" %></td>
+    <td><%= link_to 'Eliminar', user_micropost_path(@user, micropost), class: "btn btn-small btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Micropost', new_user_micropost_path(@user) %>
+<div class="form-actions">
+<%= link_to '+ Novo Micropost', new_user_micropost_path(@user), class: "btn btn-large btn-block btn-primary" %>
 </br>
 
 
-<%= link_to @user.name + ' Page', user_path(@user) %>
+<%= link_to @user.name + ' Page', user_path(@user), class: "btn btn-large btn-block" %>
+
+</div>
+
+
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+  
+</div>

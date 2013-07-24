@@ -7,7 +7,7 @@
 
 <p>
   <b>User:</b>
-  <%= @micropost.user_id %>
+  <%= @user.name %>
 </p>
 
 <p>
@@ -16,6 +16,6 @@
 </p>
 
 
-<%= link_to 'Edit', edit_user_micropost_path(@user,@micropost) %> |
-<%= link_to 'Back', user_microposts_path(@user, @microposts)%>
+<%= link_to 'Alterar', edit_user_micropost_path(@user,@micropost),class: "btn btn-mini btn-primary" %> |
+<%= link_to 'Voltar', user_microposts_path(@user, @microposts), class: "btn btn-mini"%>
 
