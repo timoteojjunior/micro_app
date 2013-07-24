@@ -2,13 +2,19 @@ MicroApp::Application.routes.draw do
   
 
 
+ 
+
   resources :users do
     resources :microposts
   end
   
   root :to =>'users#index'
 
-
+   resources :user_sessions
+          get 'login', to: 'user_sessions#new'
+          get 'logout', to: 'user_sessions#destroy'
+  
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
