@@ -28,7 +28,7 @@ end
 
 gem 'jquery-rails'
 
-
+gem 'authlogic'
 
 gem 'execjs'
 
